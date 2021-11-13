@@ -12,7 +12,7 @@ const AddProduct = () => {
   const onSubmit = data => {
     if(imageLink){
         data.image = imageLink
-        axios.post('http://localhost:5000/addProduct',{
+        axios.post('https://blooming-lake-58192.herokuapp.com/addProduct',{
             body: data
         })
         .then(res => {

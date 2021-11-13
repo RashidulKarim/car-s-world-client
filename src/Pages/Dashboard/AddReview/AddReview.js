@@ -19,7 +19,7 @@ const AddReview = () => {
         setWarning("")
         data.image = imageLink
         data.ratting = ratting
-        axios.post('http://localhost:5000/addReview',{
+        axios.post('https://blooming-lake-58192.herokuapp.com/addReview',{
             body: data
         })
         .then(res => {

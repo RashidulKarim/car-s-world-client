@@ -12,7 +12,7 @@ const MyOrder = () => {
     const [orders, setOrders] = useState([])
     const {user} = useAuth();
     useEffect(()=>{
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
+        fetch(`https://blooming-lake-58192.herokuapp.com/orders?email=${user.email}`)
         .then(res => res.json())
         .then(data => setOrders(data))
     },[user.email])
@@ -21,7 +21,7 @@ const MyOrder = () => {
         setDeleteMessage("")
         const confirmation = window.confirm("Do you want to Delete?")
         if(confirmation){
-            fetch(`http://localhost:5000/order?id=${id}`,{
+            fetch(`https://blooming-lake-58192.herokuapp.com/order?id=${id}`,{
             method:"DELETE"
         })
         .then(res => res.json())

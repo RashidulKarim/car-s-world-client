@@ -15,7 +15,7 @@ const MakeAdmin = () => {
         setSuccess('')
         setError('')
         e.preventDefault()
-        fetch(`http://localhost:5000/users?email=${emailRef.current.value}`,{
+        fetch(`https://blooming-lake-58192.herokuapp.com/users?email=${emailRef.current.value}`,{
             method:"PUT"
         })
         .then(res => res.json())
