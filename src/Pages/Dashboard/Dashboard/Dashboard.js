@@ -74,7 +74,7 @@ const Dashboard = () => {
     const {navItemColor, liStyle, navItemNone, navIcon
         ,drawerSize,dashboardMenuIcon, menuRight} = useStyle();
     useEffect(()=>{
-        fetch(`https://blooming-lake-58192.herokuapp.com/users?email=${user.email}`)
+        fetch(`https://enigmatic-ocean-15470.herokuapp.com/users?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
             setUserInfo(data)

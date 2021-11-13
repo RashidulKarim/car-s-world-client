@@ -10,7 +10,7 @@ const ManageAllOrder = () => {
     const [orders, setOrders] = useState([])
     const [successfulMessage, setSuccessfulMessage] = useState('')
     useEffect(()=>{
-        fetch('https://blooming-lake-58192.herokuapp.com/allOrders')
+        fetch('https://enigmatic-ocean-15470.herokuapp.com/allOrders')
         .then(res => res.json())
         .then(data => {
             setOrders(data)
@@ -21,7 +21,7 @@ const ManageAllOrder = () => {
         setDeleteMessage("")
         const confirmation = window.confirm("Do you want to Delete?")
         if(confirmation){
-            fetch(`https://blooming-lake-58192.herokuapp.com/order?id=${id}`,{
+            fetch(`https://enigmatic-ocean-15470.herokuapp.com/order?id=${id}`,{
             method:"DELETE"
         })
         .then(res => res.json())
@@ -52,7 +52,7 @@ const ManageAllOrder = () => {
         const confirmation = window.confirm("Do you want to update the status")
         if(confirmation){
             const status = e.target.value
-            fetch(`https://blooming-lake-58192.herokuapp.com/order?status=${status}`,{
+            fetch(`https://enigmatic-ocean-15470.herokuapp.com/order?status=${status}`,{
                 method:'PUT',
                 headers:{
                     'content-type':'application/json'

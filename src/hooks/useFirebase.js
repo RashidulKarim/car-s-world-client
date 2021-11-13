@@ -17,7 +17,7 @@ const useFirebase = () => {
               }).then(() => {
                   const userInfo = {email, displayName: name}
                   setUser(userInfo)
-                  fetch("https://blooming-lake-58192.herokuapp.com/users",{
+                  fetch("https://enigmatic-ocean-15470.herokuapp.com/users",{
                       method:'POST',
                       headers:{
                           'content-type':'application/json'

@@ -25,7 +25,7 @@ const Booking = () => {
     const onSubmit = data => {  
         setSuccessfulMessage('')  
         const orderDetails = {date: date.toDateString(), name: data.name, email: data.email, carModel: product.name, carPrice: product.price, phone: data.phone, address:data.address ,status:'pending'}
-        axios.post("https://blooming-lake-58192.herokuapp.com/order",{
+        axios.post("https://enigmatic-ocean-15470.herokuapp.com/order",{
             orderDetails
         })
         .then(res => {
@@ -38,7 +38,7 @@ const Booking = () => {
 
 
     useEffect(()=>{
-        fetch(`https://blooming-lake-58192.herokuapp.com/product?id=${id}`)
+        fetch(`https://enigmatic-ocean-15470.herokuapp.com/product?id=${id}`)
         .then(res => res.json())
         .then(data => {
             setProduct(data)

@@ -7,7 +7,7 @@ const FeatureCars = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(()=>{
-      fetch('https://blooming-lake-58192.herokuapp.com/products')
+      fetch('https://enigmatic-ocean-15470.herokuapp.com/products')
       .then(res => res.json())
       .then(data => setProducts(data.slice(0,6))
       ).catch(err => console.log(err))

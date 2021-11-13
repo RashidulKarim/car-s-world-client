@@ -9,7 +9,7 @@ const ManageProduct = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(()=>{
-        fetch('https://blooming-lake-58192.herokuapp.com/products')
+        fetch('https://enigmatic-ocean-15470.herokuapp.com/products')
         .then(res => res.json())
         .then(data => setProducts(data)
         )
@@ -18,7 +18,7 @@ const ManageProduct = () => {
     const handleDelete = (id) => {
         const confirmation = window.confirm("Do you want to Delete?")
         if(confirmation){
-            fetch(`https://blooming-lake-58192.herokuapp.com/product?id=${id}`,{
+            fetch(`https://enigmatic-ocean-15470.herokuapp.com/product?id=${id}`,{
             method:"DELETE"
         })
         .then(res => res.json())

@@ -12,7 +12,7 @@ const MyOrder = () => {
     const [orders, setOrders] = useState([])
     const {user} = useAuth();
     useEffect(()=>{
-        fetch(`https://blooming-lake-58192.herokuapp.com/orders?email=${user.email}`)
+        fetch(`https://enigmatic-ocean-15470.herokuapp.com/orders?email=${user.email}`)
         .then(res => res.json())
         .then(data => setOrders(data))
     },[user.email])
@@ -21,7 +21,7 @@ const MyOrder = () => {
         setDeleteMessage("")
         const confirmation = window.confirm("Do you want to Delete?")
         if(confirmation){
-            fetch(`https://blooming-lake-58192.herokuapp.com/order?id=${id}`,{
+            fetch(`https://enigmatic-ocean-15470.herokuapp.com/order?id=${id}`,{
             method:"DELETE"
         })
         .then(res => res.json())
