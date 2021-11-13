@@ -76,7 +76,7 @@ const [state, setState] = React.useState(false);
                   user.email ? 
                   <>
                   <Button color="inherit"><Link  style={{textDecoration:'none', color:'black'}} to='/dashboard'>DashBoard</Link></Button> 
-                  <Button color="inherit">{user.displayName}</Button> 
+                  <Button color="inherit"><Link style={{textDecoration:'none', color:'black'}} to='/dashboard' >{user.displayName}</Link></Button> 
                   <Button color="inherit"><Link style={{textDecoration:'none', color:'black'}} to='' onClick={logOut} >LogOut</Link></Button>
                   </> :<Button color="inherit"><Link  style={{textDecoration:'none', color:'black'}} to='/login'>Login</Link></Button>
                 }

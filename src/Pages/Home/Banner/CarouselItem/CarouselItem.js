@@ -16,7 +16,7 @@ const CarouselItem = (props) => {
                 </Typography>
             <p></p>
             <Button variant='contained'>
-            <Link style={{textDecoration:"none", color:"white"}} to='/allProducts'><Box sx={{fontSize:{xs:6, sm:10, md:12, lg:14}}}>Find More</Box></Link>
+            <Link style={{textDecoration:"none", color:"white"}} to='/allProducts'><Box sx={{fontSize:{xs:6, sm:10, md:12, lg:14}}}>Explore More</Box></Link>
             </Button>
             </Box>
         </Paper>

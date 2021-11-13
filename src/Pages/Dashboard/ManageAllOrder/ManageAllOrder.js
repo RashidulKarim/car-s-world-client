@@ -74,7 +74,7 @@ const ManageAllOrder = () => {
     return (
         <Box>
         <Typography variant='h4' sx={{fontWeight:700, py:3, textAlign:'center'}}>
-            My Orders
+            All Orders
         </Typography>
         <TableContainer  sx={{mb:5, maxWidth:'800px', mx:"auto"}} component={Paper}>
         {
@@ -115,6 +115,7 @@ const ManageAllOrder = () => {
                 <MenuItem value={"pending"}>Pending</MenuItem>
                 <MenuItem value={"confirm"}>Confirm</MenuItem>
                 <MenuItem value={"shipped"}>Shipped</MenuItem>
+                <MenuItem value={"cancel"}>Cancel</MenuItem>
             </Select>
             </TableCell>
           <TableCell><FontAwesomeIcon onClick={()=>handleDelete(order._id)} style={{color:'red', fontSize:'20px',paddingLeft:'20px', cursor:'pointer'}} icon={faTrashAlt} /></TableCell>

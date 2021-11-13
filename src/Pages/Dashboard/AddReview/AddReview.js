@@ -66,8 +66,8 @@ const AddReview = () => {
 
                     <TextField sx={{width:{xs: '60%', md:'20%'}}} {...register("name", { required: true })} label="Your Name" variant="outlined" /> <br />
                     {errors.name && <span>This field is required</span>} <br />
-                    <TextField sx={{width:{xs: '60%', md:'20%'}}} {...register("address", { required: true })} label="Address" variant="outlined" /> <br />
-                    {errors.address && <span>This field is required</span>} <br />
+                    <TextField sx={{width:{xs: '60%', md:'20%'}}} {...register("email", { required: true })} label="Your Email" variant="outlined" /> <br />
+                    {errors.email && <span>This field is required</span>} <br />
                     <TextField multiline
                     rows={4} sx={{width:{xs: '60%', md:'20%'}}}  {...register("comment", { required: true })} label="Your Comment" variant="outlined" /> <br />
                     {errors.comment && <span>This field is required</span>} <br />
