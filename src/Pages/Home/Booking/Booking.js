@@ -19,7 +19,7 @@ const Booking = () => {
         setTimeout(
             function() {
               history.push('/allProducts')
-            }, 3000)
+            }, 2000)
     }
 
     const onSubmit = data => {  
@@ -55,11 +55,11 @@ const Booking = () => {
             </Box>
           );
     }
-    
+    // , height:"700px"
     return (
-        <Box sx={{backgroundImage:`url(${bookingImg})`, backgroundSize:"cover",backgroundPosition:"center", height:"700px", width:'100%', mt:2}}>
+        <Box sx={{backgroundImage:`url(${bookingImg})`, backgroundSize:"cover",backgroundPosition:"center", width:'100%', mt:8,pt:2, pb:3}}>
             <Container>
-            <Grid container spacing={2} sx={{display:'flex', justifyContent:"center", alignItems:'center', color:'white', height:"650px", width:'100%' }}>
+            <Grid container spacing={2} sx={{display:'flex', justifyContent:"center", alignItems:'center', color:'white',  width:'100%' }}>
                 <Grid item xs={12} md={6} sx={{textAlign:'center'}}>
                     <Typography variant='h3' sx={{fontWeight:700, px:5, py:1}}>
                        Confirm Your Booking

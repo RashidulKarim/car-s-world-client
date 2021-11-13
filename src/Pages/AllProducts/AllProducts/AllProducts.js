@@ -27,7 +27,7 @@ const AllProducts = () => {
   
     return (
         <Container>
-        <Box sx={{my:5}}>
+        <Box sx={{mb:5, mt:8, pt:2}}>
                 <Box sx={{textAlign:'center'}}>
                 <Typography sx={{fontSize:{xs: 25, sm: 30, md:35, lg: 40}, fontWeight:700, color:'#3DB2FF'}}>
                     Our Cars

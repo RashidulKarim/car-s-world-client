@@ -7,6 +7,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({})
     const [error, setError] = useState('')
     const auth = getAuth();
+    const [isLoading, setIsLoading] = useState(true)
 
     const signUp = (email, password, name, history) => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -16,6 +17,16 @@ const useFirebase = () => {
               }).then(() => {
                   const userInfo = {email, displayName: name}
                   setUser(userInfo)
+                  fetch("http://localhost:5000/users",{
+                      method:'POST',
+                      headers:{
+                          'content-type':'application/json'
+                      },
+                      body:JSON.stringify({name: userInfo.displayName, email: userInfo.email, role: 'user' })
+                  })
+                  .then(res =>res.json() )
+                  .then(data =>{   
+                  })
                 history.push('/')
                 window.location.reload()
               }).catch((err) => {
@@ -25,7 +36,6 @@ const useFirebase = () => {
         })
         .catch(err =>{
             setError(err.message)
-            
         })
     }
 
@@ -41,10 +51,10 @@ const useFirebase = () => {
         })
     }
 
-    const logIn = (email, password) => {
+    const logIn = (email, password, history, from) => {
         signInWithEmailAndPassword(auth, email, password)
         .then(res => {
-            //user sign in
+            history.replace(from);
             setError('')
         })
         .catch(err => {
@@ -54,11 +64,14 @@ const useFirebase = () => {
 
 
     useEffect(()=>{
+        setIsLoading(true)
         onAuthStateChanged(auth, (user) => {
             if (user) {
               setUser(user)
+              setIsLoading(false)
             } else {
               setUser('')
+              setIsLoading(false)
             }
           });
     },[])
@@ -68,7 +81,8 @@ const useFirebase = () => {
         error,
         user,
         logOut,
-        logIn
+        logIn,
+        isLoading,
     }
 };
 

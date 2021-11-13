@@ -10,8 +10,9 @@ const FeatureCars = () => {
       fetch('http://localhost:5000/products')
       .then(res => res.json())
       .then(data => setProducts(data.slice(0,6))
-      )
+      ).catch(err => console.log(err))
   },[])
+
   if(products.length===0){
     return (
         <Box sx={{width:1, height:"500px", display:'flex', justifyContent:'center', alignItems:'center'}}>

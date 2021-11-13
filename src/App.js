@@ -11,6 +11,7 @@ import Home from './Pages/Home/Home/Home';
 import NotFound from './Pages/NotFound/NotFound';
 import Footer from './Pages/Shared/Footer/Footer';
 import Navigation from './Pages/Shared/Navigation/Navigation';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -35,12 +36,12 @@ function App() {
             <Route path='/register'>
               <Register/>
               </Route>
-            <Route path='/dashboard'>
+            <PrivateRoute path='/dashboard'>
               <Dashboard/>
-              </Route>
-            <Route path='/product/:id'>
+              </PrivateRoute>
+            <PrivateRoute path='/product/:id'>
               <Booking></Booking>
-              </Route>
+              </PrivateRoute>
             <Route path='*'>
               <NotFound/>
               </Route>

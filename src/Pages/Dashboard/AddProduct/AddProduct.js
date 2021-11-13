@@ -51,18 +51,18 @@ const AddProduct = () => {
     }
 
     return (
-        <Box sx={{width:1, textAlign:'center', border:'2px solid gray', height:'550px' }}>
-            <Box sx={{display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center', width:"100%", height:'550px'}}>
-            <Typography variant='h5'>
+        <Box sx={{textAlign:'center',mt:8}}>
+            <Box sx={{display:'flex',flexDirection:'column', justifyContent:'center'}}>
+            <Typography variant='h5' sx={{fontWeight:700}}>
                 Add Product
             </Typography>
-            <form style={{width:"500px"}} onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
 
-                    <TextField sx={{width:.5}} {...register("name", { required: true })} label="Name" variant="standard" /> <br />
+                    <TextField sx={{width:{xs: '60%', md:'20%'}}} {...register("name", { required: true })} label="Name" variant="standard" /> <br />
                     {errors.name && <span>This field is required</span>} <br />
-                    <TextField sx={{width:.5, mt:1}} width='100%' {...register("price", { required: true })} label="Price" variant="standard" /> <br />
+                    <TextField sx={{width:{xs: '60%', md:'20%', mt:1}}} {...register("price", { required: true })} label="Price" variant="standard" /> <br />
                     {errors.price && <span>This field is required</span>} <br />
-                    <TextField sx={{width:.5, mb:2}} onInput={handleImageSubmit}  {...register("image")} label="Image" type='file' variant="standard" /> <br />
+                    <TextField sx={{width:{xs: '60%', md:'20%'}, mb:2}} onInput={handleImageSubmit}  {...register("image")} label="Image" type='file' variant="standard" /> <br />
                     {
                         warning && <Alert sx={{width:"200px", mx:'auto',my:1}} severity="error">{warning}</Alert>
                     }
@@ -70,7 +70,7 @@ const AddProduct = () => {
                     {
                         successMessage && <Alert sx={{width:"200px", mx:'auto',my:1}}  severity="success">{successMessage}</Alert>
                     }
-                    <Button sx={{width:.5}} variant='contained' type='submit'>Submit</Button>
+                    <Button sx={{width:{xs: '60%', md:'20%'}}} variant='contained' type='submit'>Submit</Button>
                     
             </form>
 

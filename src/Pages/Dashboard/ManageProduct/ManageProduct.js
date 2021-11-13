@@ -48,7 +48,7 @@ const ManageProduct = () => {
             <Typography variant='h4' sx={{fontWeight:700, py:3, textAlign:'center'}}>
                 Manage Products
             </Typography>
-            <TableContainer sx={{width:'600px', mx:"auto", mb:5}} component={Paper}>
+            <TableContainer sx={{mb:5, maxWidth:'600px', mx:"auto"}} component={Paper}>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>

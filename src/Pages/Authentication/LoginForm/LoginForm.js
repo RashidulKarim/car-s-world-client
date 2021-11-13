@@ -1,13 +1,27 @@
-import { Alert, Button, TextField, Typography } from '@mui/material';
+import { Alert, Button, TextField, Typography, useTheme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 const LoginForm = ({isRegister, method, message}) => {
     const [isPasswordMatched, setIsPasswordMatched] = useState(false)
     const history = useHistory()
-    
+    const location = useLocation();
+    const theme = useTheme();
+    const useStyle = makeStyles({
+        formField:{
+            [theme.breakpoints.down('sm')]: {
+                 width:"100%", margin:'10px 0px'
+              },
+              [theme.breakpoints.up('sm')]: {
+                width:"75%", margin: "10px 0px 10px 50px"
+             },
+        }
+    })
+    const {formField} = useStyle()
+    let { from } = location.state || { from: { pathname: "/dashboard" } };
     const {
         register,
         handleSubmit,
@@ -24,32 +38,32 @@ const LoginForm = ({isRegister, method, message}) => {
                 setIsPasswordMatched(true)
             }
         }else{
-            method(data.email, data.password)
+            method(data.email, data.password, history, from)
         }
         reset()
       }; 
     
     return (
-        <Box>
-            <Typography style={{margin:'10px 50px', fontWeight:'700'}} variant='h4'>
+        <Box sx={{w:1}}>
+            <Typography style={{width:300, margin:'20px auto', fontWeight:'700'}} variant='h4'>
                 {isRegister ? "Please Register" : "Please Login" }
             </Typography>
             {isPasswordMatched && <Alert sx={{ml:5}} severity="error">Password and confirm password didn't matched</Alert>}
             {message && <Alert sx={{ml:5}} severity="error">{message}</Alert>}
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form style={{width:"100%"}} onSubmit={handleSubmit(onSubmit)}>
             {
-                isRegister && <><TextField style={{width:"75%", margin:'20px 50px'}} {...register("name", { required: true })}  label="Full Name" variant="outlined" />
-                {errors.name && <span style={{width:"75%", margin:'20px 50px', color:'red'}}>This field is required</span>} </>
+                isRegister && <><TextField className={formField} {...register("name", { required: true })}  label="Full Name" variant="outlined" />
+                {errors.name && <span className={formField}  style={{color:'red'}}>This field is required</span>} </>
             }
-            <TextField type="email" style={{width:"75%", margin:'20px 50px'}} {...register("email", { required: true })}  label="Email" variant="outlined" />
-            {errors.email && <span style={{width:"75%", margin:'20px 50px', color:'red'}}>This field is required</span>} <br />
-            <TextField type='password' style={{width:"75%", margin:'20px 50px'}} {...register("password", { required: true })} label="Password" variant="outlined" />
-            {errors.password && <span style={{width:"75%", margin:'20px 50px', color:'red'}}>This field is required</span>} <br />
+            <TextField type="email" className={formField} {...register("email", { required: true })}  label="Email" variant="outlined" />
+            {errors.email && <span className={formField} style={{color:'red'}}>This field is required</span>} <br />
+            <TextField type='password' className={formField}  {...register("password", { required: true })} label="Password" variant="outlined" />
+            {errors.password && <span className={formField} style={{color:'red'}}>This field is required</span>} <br />
             {
-                isRegister && <><TextField style={{width:"75%", margin:'20px 50px'}} {...register("password2", { required: true })} type="password" label="Confirm your password" variant="outlined" />
-                {errors.password2 && <span style={{width:"75%", margin:'20px 50px', color:'red'}}>This field is required</span>} </>
+                isRegister && <><TextField className={formField}  {...register("password2", { required: true })} type="password" label="Confirm your password" variant="outlined" />
+                {errors.password2 && <span className={formField}  style={{ color:'red'}}>This field is required</span>} </>
             }
-            <Button style={{width:"75%", margin:'20px 50px'}} variant='contained' type='submit'>{isRegister? "Register": "Login"}</Button>
+            <Button className={formField} variant='contained' type='submit'>{isRegister? "Register": "Login"}</Button>
       </form>
       {
                 isRegister ? <Typography variant='subtitle1' sx={{mt:2, textAlign:'center'}}>
