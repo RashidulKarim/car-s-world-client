@@ -11,6 +11,7 @@ import Home from './Pages/Home/Home/Home';
 import NotFound from './Pages/NotFound/NotFound';
 import Footer from './Pages/Shared/Footer/Footer';
 import Navigation from './Pages/Shared/Navigation/Navigation';
+import Payment from './Pages/Shared/Payment/Payment';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
               </Route>
             <PrivateRoute path='/dashboard'>
               <Dashboard/>
+              </PrivateRoute>
+            <PrivateRoute path='/payment'>
+              <Payment></Payment>
               </PrivateRoute>
             <PrivateRoute path='/product/:id'>
               <Booking></Booking>

@@ -10,6 +10,7 @@ const LoginForm = ({isRegister, method, message}) => {
     const history = useHistory()
     const location = useLocation();
     const theme = useTheme();
+    
     const useStyle = makeStyles({
         formField:{
             [theme.breakpoints.down('sm')]: {

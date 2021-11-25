@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Alert, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 
@@ -10,18 +11,17 @@ import useAuth from '../../../hooks/useAuth';
 const MyOrder = () => {
     const [deleteMessage, setDeleteMessage] = useState('')
     const [orders, setOrders] = useState([])
-    const {user} = useAuth();
+    const {user} = useAuth();    
     useEffect(()=>{
-        fetch(`https://enigmatic-ocean-15470.herokuapp.com/orders?email=${user.email}`)
-        .then(res => res.json())
-        .then(data => setOrders(data))
+        axios.get(`https://cars-world-server.herokuapp.com/orders?email=${user.email}`)
+        .then(data => setOrders(data.data))
     },[user.email])
 
     const handleDelete = (id) => {
         setDeleteMessage("")
         const confirmation = window.confirm("Do you want to Delete?")
         if(confirmation){
-            fetch(`https://enigmatic-ocean-15470.herokuapp.com/order?id=${id}`,{
+            fetch(`https://cars-world-server.herokuapp.com/order?id=${id}`,{
             method:"DELETE"
         })
         .then(res => res.json())
@@ -52,7 +52,7 @@ const MyOrder = () => {
         <Typography variant='h4' sx={{fontWeight:700, py:3, textAlign:'center'}}>
             My Orders
         </Typography>
-        <TableContainer sx={{mb:5, maxWidth:'800px', mx:'auto'}} component={Paper}>
+        <TableContainer sx={{mb:5, maxWidth:'850px', mx:'auto'}} component={Paper}>
         {
                         deleteMessage && <Alert sx={{mx:'auto',my:1}}  severity="success">{deleteMessage}</Alert>
                     }
@@ -63,6 +63,7 @@ const MyOrder = () => {
         <TableCell>Email</TableCell>
         <TableCell>Car Model</TableCell>
         <TableCell>Price</TableCell>
+        <TableCell>Date</TableCell>
         <TableCell>Status</TableCell>
         <TableCell>Cancel Order</TableCell>
       </TableRow>
@@ -79,6 +80,7 @@ const MyOrder = () => {
           <TableCell>{order.email}</TableCell>
           <TableCell>{order.carModel}</TableCell>
           <TableCell>${order.carPrice}</TableCell>
+          <TableCell>{order.date}</TableCell>
           <TableCell sx={{color: 'green', fontWeight: 700}}>{order.status}</TableCell>
           <TableCell><FontAwesomeIcon onClick={()=>handleDelete(order._id)} style={{color:'red', fontSize:'20px',paddingLeft:'20px', cursor:'pointer'}} icon={faTrashAlt} /></TableCell>
         </TableRow>

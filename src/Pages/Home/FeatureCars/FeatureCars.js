@@ -1,5 +1,6 @@
 import { Container, Grid, Skeleton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import SingleCar from '../../Shared/SingleCar/SingleCar';
 
@@ -7,9 +8,8 @@ const FeatureCars = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(()=>{
-      fetch('https://enigmatic-ocean-15470.herokuapp.com/products')
-      .then(res => res.json())
-      .then(data => setProducts(data.slice(0,6))
+      axios.get('https://cars-world-server.herokuapp.com/products')
+      .then(data => setProducts(data?.data.slice(0,6))
       ).catch(err => console.log(err))
   },[])
 

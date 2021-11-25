@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory, useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import bookingImg from '../../../images/bookingBg.jpg';
 
@@ -18,27 +19,28 @@ const Booking = () => {
     if(successfulMessage){
         setTimeout(
             function() {
-              history.push('/allProducts')
+              history.push('/dashboard/myOrder')
             }, 2000)
     }
 
     const onSubmit = data => {  
         setSuccessfulMessage('')  
         const orderDetails = {date: date.toDateString(), name: data.name, email: data.email, carModel: product.name, carPrice: product.price, phone: data.phone, address:data.address ,status:'pending'}
-        axios.post("https://enigmatic-ocean-15470.herokuapp.com/order",{
+        
+        axios.post("https://cars-world-server.herokuapp.com/order",{
             orderDetails
         })
         .then(res => {
             console.log(res)
             reset()
-            setSuccessfulMessage('Order placed successfully')  
+            setSuccessfulMessage('Order placed successfully')
         }
         )
     };
 
 
     useEffect(()=>{
-        fetch(`https://enigmatic-ocean-15470.herokuapp.com/product?id=${id}`)
+        fetch(`https://cars-world-server.herokuapp.com/product?id=${id}`)
         .then(res => res.json())
         .then(data => {
             setProduct(data)
@@ -90,7 +92,7 @@ const Booking = () => {
                     <TextField {...register("address", { required: true })} style={{width:"100%", margin:'10px auto'}} id="outlined-basic" label="Address" variant="outlined"  />
                     {errors.address && <span>This field is required</span>}
                     
-                    <Button sx={{mb:2,mt:1, width:1}} variant='contained' type="submit">Submit</Button>
+                    <Link to='/payment' style={{textDecoration:'none'}}><Button sx={{mb:2,mt:1, width:1}} variant='contained' type="submit">Submit</Button></Link>
                 </form>
                 </Box>
                 </Grid>

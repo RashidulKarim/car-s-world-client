@@ -1,9 +1,10 @@
 import AppsIcon from '@mui/icons-material/Apps';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Skeleton, Typography, useTheme } from '@mui/material';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import { makeStyles } from '@mui/styles';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {
     Link, Route, Switch, useRouteMatch
@@ -74,12 +75,24 @@ const Dashboard = () => {
     const {navItemColor, liStyle, navItemNone, navIcon
         ,drawerSize,dashboardMenuIcon, menuRight} = useStyle();
     useEffect(()=>{
-        fetch(`https://enigmatic-ocean-15470.herokuapp.com/users?email=${user.email}`)
-        .then(res => res.json())
+        axios.get(`https://cars-world-server.herokuapp.com/users?email=${user.email}`)
         .then(data => {
-            setUserInfo(data)
+            setUserInfo(data.data)
+            
         })
-    },[user.email])
+    },[user])
+
+    if(!userInfo.role){
+        return (
+            <Box sx={{width:1, height:"500px", display:'flex', justifyContent:'center', alignItems:'center'}}>
+            <Box sx={{ width: 300 }}>
+              <Skeleton />
+              <Skeleton animation="wave" />
+              <Skeleton animation={false} />
+            </Box>
+            </Box>
+          );
+    }
     
     return (
         <Box className={menuRight} style={{paddingBottom:"0px"}} sx={{mt:8, pb:3 ,minHeight:'500px', display:"flex", width:"100%"}}>

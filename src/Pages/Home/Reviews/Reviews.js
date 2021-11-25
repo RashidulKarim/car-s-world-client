@@ -1,5 +1,6 @@
 import { Container, Grid, Skeleton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,9 +15,8 @@ const Reviews = () => {
     const [reviews, retReviews] = useState([]);
 
   useEffect(()=>{
-      fetch('https://enigmatic-ocean-15470.herokuapp.com/reviews')
-      .then(res => res.json())
-      .then(data => retReviews(data)
+      axios.get('https://cars-world-server.herokuapp.com/reviews')
+      .then(data => retReviews(data.data)
       )
   },[])
   

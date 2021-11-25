@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import firebaseInit from "../Pages/Authentication/FirebaseSetUp/firebase.init";
@@ -12,23 +13,21 @@ const useFirebase = () => {
     const signUp = (email, password, name, history) => {
         createUserWithEmailAndPassword(auth, email, password)
         .then(res =>{
+            signOut(auth) 
+            alert("SignUp Successfully , please login.")
+            history.push("/login")
             updateProfile(auth.currentUser, {
                 displayName: name
               }).then(() => {
                   const userInfo = {email, displayName: name}
-                  setUser(userInfo)
-                  fetch("https://enigmatic-ocean-15470.herokuapp.com/users",{
-                      method:'POST',
-                      headers:{
-                          'content-type':'application/json'
-                      },
-                      body:JSON.stringify({name: userInfo.displayName, email: userInfo.email, role: 'user' })
+                //   setUser(userInfo)
+                const info = {name: userInfo.displayName, email: userInfo.email, role: 'user' }
+                  axios.post("https://cars-world-server.herokuapp.com/users",{
+                      info
                   })
-                  .then(res =>res.json() )
-                  .then(data =>{   
+                  .then(data =>{ 
+                    
                   })
-                history.push('/')
-                window.location.reload()
               }).catch((err) => {
                 setError(err.message)
               });
@@ -67,6 +66,8 @@ const useFirebase = () => {
         setIsLoading(true)
         onAuthStateChanged(auth, (user) => {
             if (user) {
+                console.log(user)
+                
               setUser(user)
               setIsLoading(false)
             } else {
@@ -74,7 +75,7 @@ const useFirebase = () => {
               setIsLoading(false)
             }
           });
-    },[])
+    },[auth])
     
     return {
         signUp,

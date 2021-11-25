@@ -19,7 +19,7 @@ const AddReview = () => {
         setWarning("")
         data.image = imageLink
         data.ratting = ratting
-        axios.post('https://enigmatic-ocean-15470.herokuapp.com/addReview',{
+        axios.post('https://cars-world-server.herokuapp.com/addReview',{
             body: data
         })
         .then(res => {

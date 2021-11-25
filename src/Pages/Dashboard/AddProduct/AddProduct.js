@@ -12,7 +12,7 @@ const AddProduct = () => {
   const onSubmit = data => {
     if(imageLink){
         data.image = imageLink
-        axios.post('https://enigmatic-ocean-15470.herokuapp.com/addProduct',{
+        axios.post('https://cars-world-server.herokuapp.com/addProduct',{
             body: data
         })
         .then(res => {

@@ -18,6 +18,8 @@ import useAuth from '../../../hooks/useAuth';
 
 const Navigation = () => {
     const {user, logOut} = useAuth();
+    console.log(user.displayName)
+    
     const theme = useTheme();
   const useStyle = makeStyles({
   navIcon: {
@@ -73,10 +75,12 @@ const [state, setState] = React.useState(false);
                 <Button  color="inherit"><Link  to='/home' style={{textDecoration:'none', color:'black'}}>Home</Link></Button>
                 <Button color="inherit"><Link  style={{textDecoration:'none', color:'black'}} to='/allProducts'>All Products</Link></Button>
                 {
+                  user.displayName && <Button color="inherit"><Link style={{textDecoration:'none', color:'black'}} to='/dashboard' >{user.displayName}</Link></Button>
+                }
+                {
                   user.email ? 
                   <>
-                  <Button color="inherit"><Link  style={{textDecoration:'none', color:'black'}} to='/dashboard'>DashBoard</Link></Button> 
-                  <Button color="inherit"><Link style={{textDecoration:'none', color:'black'}} to='/dashboard' >{user.displayName}</Link></Button> 
+                  <Button color="inherit"><Link  style={{textDecoration:'none', color:'black'}} to='/dashboard'>DashBoard</Link></Button>  
                   <Button color="inherit"><Link style={{textDecoration:'none', color:'black'}} to='' onClick={logOut} >LogOut</Link></Button>
                   </> :<Button color="inherit"><Link  style={{textDecoration:'none', color:'black'}} to='/login'>Login</Link></Button>
                 }

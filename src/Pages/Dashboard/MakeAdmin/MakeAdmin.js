@@ -15,7 +15,7 @@ const MakeAdmin = () => {
         setSuccess('')
         setError('')
         e.preventDefault()
-        fetch(`https://enigmatic-ocean-15470.herokuapp.com/users?email=${emailRef.current.value}`,{
+        fetch(`https://cars-world-server.herokuapp.com/users?email=${emailRef.current.value}`,{
             method:"PUT"
         })
         .then(res => res.json())
