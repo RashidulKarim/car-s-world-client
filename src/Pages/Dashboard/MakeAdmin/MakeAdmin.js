@@ -30,7 +30,6 @@ const MakeAdmin = () => {
             else if(data.matchedCount>0){
                 setError('Already added as a admin.')
                 setSuccess("")
-                console.log(emailRef.current.value)
             }
             else{
                 setError("To make admin, you have to register first.")

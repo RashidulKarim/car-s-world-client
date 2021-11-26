@@ -66,7 +66,6 @@ const useFirebase = () => {
         setIsLoading(true)
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                console.log(user)
                 
               setUser(user)
               setIsLoading(false)

@@ -23,7 +23,6 @@ const ManageProduct = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             if(data.deletedCount>0){
                 const remainingItem = products.filter(product => product._id !== id)
                 setProducts(remainingItem)

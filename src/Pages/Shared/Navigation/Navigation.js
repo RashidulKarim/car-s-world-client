@@ -18,7 +18,6 @@ import useAuth from '../../../hooks/useAuth';
 
 const Navigation = () => {
     const {user, logOut} = useAuth();
-    console.log(user.displayName)
     
     const theme = useTheme();
   const useStyle = makeStyles({

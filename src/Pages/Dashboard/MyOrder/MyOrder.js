@@ -1,10 +1,11 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Alert, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Alert, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 
@@ -66,6 +67,7 @@ const MyOrder = () => {
         <TableCell>Date</TableCell>
         <TableCell>Status</TableCell>
         <TableCell>Cancel Order</TableCell>
+        <TableCell>Make Payment</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -83,6 +85,11 @@ const MyOrder = () => {
           <TableCell>{order.date}</TableCell>
           <TableCell sx={{color: 'green', fontWeight: 700}}>{order.status}</TableCell>
           <TableCell><FontAwesomeIcon onClick={()=>handleDelete(order._id)} style={{color:'red', fontSize:'20px',paddingLeft:'20px', cursor:'pointer'}} icon={faTrashAlt} /></TableCell>
+          <TableCell>
+            {
+              order.payment ? <Button variant='contained' disabled>paid</Button>: <Link to={`/pay/${order._id}`} style={{textDecoration:'none'}}><Button variant='contained'>Pay</Button></Link>
+            }
+          </TableCell>
         </TableRow>
       ))}
     </TableBody>

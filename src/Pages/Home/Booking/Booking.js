@@ -4,7 +4,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory, useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import bookingImg from '../../../images/bookingBg.jpg';
 
@@ -20,7 +19,7 @@ const Booking = () => {
         setTimeout(
             function() {
               history.push('/dashboard/myOrder')
-            }, 2000)
+            }, 5000)
     }
 
     const onSubmit = data => {  
@@ -31,9 +30,8 @@ const Booking = () => {
             orderDetails
         })
         .then(res => {
-            console.log(res)
             reset()
-            setSuccessfulMessage('Order placed successfully')
+            setSuccessfulMessage('Order placed successfully. Please complete your payment to confirm order')
         }
         )
     };
@@ -46,7 +44,7 @@ const Booking = () => {
             setProduct(data)
             })
     },[id])    
-    if(product._id === undefined || user.displayName === undefined){
+    if(product._id === undefined){
         return (
             <Box sx={{width:1, height:"500px", display:'flex', justifyContent:'center', alignItems:'center'}}>
             <Box sx={{ width: 300 }}>
@@ -92,7 +90,7 @@ const Booking = () => {
                     <TextField {...register("address", { required: true })} style={{width:"100%", margin:'10px auto'}} id="outlined-basic" label="Address" variant="outlined"  />
                     {errors.address && <span>This field is required</span>}
                     
-                    <Link to='/payment' style={{textDecoration:'none'}}><Button sx={{mb:2,mt:1, width:1}} variant='contained' type="submit">Submit</Button></Link>
+                    <Button sx={{mb:2,mt:1, width:1}} variant='contained' type="submit">Submit</Button>
                 </form>
                 </Box>
                 </Grid>

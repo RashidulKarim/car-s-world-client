@@ -6,12 +6,12 @@ import AllProducts from './Pages/AllProducts/AllProducts/AllProducts';
 import Login from './Pages/Authentication/Login/Login';
 import Register from './Pages/Authentication/Register/Register';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import Pay from './Pages/Dashboard/Pay/Pay';
 import Booking from './Pages/Home/Booking/Booking';
 import Home from './Pages/Home/Home/Home';
 import NotFound from './Pages/NotFound/NotFound';
 import Footer from './Pages/Shared/Footer/Footer';
 import Navigation from './Pages/Shared/Navigation/Navigation';
-import Payment from './Pages/Shared/Payment/Payment';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
@@ -40,8 +40,8 @@ function App() {
             <PrivateRoute path='/dashboard'>
               <Dashboard/>
               </PrivateRoute>
-            <PrivateRoute path='/payment'>
-              <Payment></Payment>
+            <PrivateRoute path='/pay/:id'>
+              <Pay></Pay>
               </PrivateRoute>
             <PrivateRoute path='/product/:id'>
               <Booking></Booking>

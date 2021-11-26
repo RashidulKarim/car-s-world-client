@@ -114,7 +114,6 @@ const Dashboard = () => {
                         {
                             userInfo.role=== 'user' && 
                             <>
-                        <li className={liStyle}><Link className={navItemColor} to={`${url}/pay`}>Pay</Link></li>
                         <li className={liStyle}><Link className={navItemColor} to={`${url}/myOrder`}>My Order</Link></li>
                         <li className={liStyle}><Link className={navItemColor} to={`${url}/addReview`}>Add Review</Link></li>
                             </>
