@@ -5,6 +5,7 @@ This is a MERN stack project which is made for car dealer. They offer wide colle
 ## Features:
 - User can book a car if he is login.
 - Confirm order info will saved on database.
+- Used Stripe as payment method.
 - Different dashboard for user and admin.
 - user can see all his order.
 - user can give a review which is saved on database and show dynamically on home page review section
@@ -18,6 +19,7 @@ This is a MERN stack project which is made for car dealer. They offer wide colle
 - Use Material Ui
 - Use React Router.
 - Use react hook form
+- Use Stripe
 - Use swiper js
 - Use firebase for authentication.
 - Use React Font Awesome for Icon
